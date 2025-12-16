@@ -1,7 +1,7 @@
 # ThermalFold
 Predicting Temperature-Dependent Protein Structure from Sequence by ThermalFold
 
-## Create conda environment and Install dependencies
+## Installation
 ```git clone https://github.com/Andachten/ThermalFold.git```
 
 ```conda env create -f environment.yml -n thermalFold```
