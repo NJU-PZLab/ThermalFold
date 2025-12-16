@@ -4,9 +4,11 @@ Predicting Temperature-Dependent Protein Structure from Sequence by ThermalFold
 ## Installation
 ```git clone https://github.com/Andachten/ThermalFold.git```
 
+```cd ThermalFold```
+
 ```conda env create -f environment.yml -n thermalFold```
 
-```conda actiavte thermalFold```
+```conda activate thermalFold```
 
 ```pip install .```
 ## Download model weight by:
@@ -36,4 +38,4 @@ with ESM_embedding('esm2_650M',device='cuda:0',cache_path='./esm_cache') as esm:
     ## return PDB format strings
     res = predictor.predict(inputs)[0]
 ```
-More example, see example/TF_prediction.ipynb
+More example, see example/TF_prediction.ipynb (which has been tested on NVIDIA RTX 4090)
