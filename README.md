@@ -1,26 +1,35 @@
 # ThermalFold
 Predicting Temperature-Dependent Protein Structure from Sequence by ThermalFold
 
-## Install dependencies
-``` pip install -r requirements.txt```
+## Create conda environment and Install dependencies
+```git clone https://github.com/Andachten/ThermalFold.git```
+
+``` conda env create -f environment.yml -n thermalFold```
+
+```pip install .```
+## Download model weight by:
+```wget https://zenodo.org/records/17951162/files/model_weight.pt -p weight/```
 
 ## Usage
+Before inference: ``` conda actiavte thermalFold```
 ``` 
-from predict import thermalFold
-from omegaconf import OmegaConf
-from lightning.pytorch import seed_everything
-import torch
+from ThermalFold.predict_utils import thermalFold_predictor
+from ThermalFold.esm_utils import ESM_embedding,ESMH5Cache
 
-model_name = f'model_weight/last.ckpt'
-cfg_name = 'train_conf.yaml'
-cfg = OmegaConf.load(cfg_name)
-model = thermalFold(model_name=model_name,cfg=cfg,device='cuda:0')
+cfg_fname = '../weight/model_conf.yaml'
+weight_path  = '../weight/model_weight.pt'
 
-seed_everything(42)
-seq  = 'GSTEKQLEAIDQLHLEYAKRAAPFNNWMESAMEDLQDMFIVHTIEEIEGLISAHDQFKSTLPDADREREAILAIHKEAQRIAESNHIKLSGSNPYTTVTPQIINSKWEKVQQLVPKRDHALLEEQSKQQ'
-temp = 400
-inputs = [[seq,temp]]
-results = model.predict(inputs,num_samples=1)
-with open('result.pdb','w') as f:
-  f.write(results[0])
+
+##Thioredoxin
+temperature = 410
+sequence = 'HGSTTFCIQDGPDFQDRVVNSETPVVVDFHAQWCGPCKILGPRLEKMVAKQHGKVVMACVDIDDHTDLAIEYEVSAVPTVLAMKNGDVVDKFVGIKDEDQLEAFLKKLIG'
+
+## Create ESM Embeddins cache
+## The prediction will run on cuda device 0
+with ESM_embedding('esm2_650M',device='cuda:0',cache_path='./esm_cache') as esm:
+    predictor = thermalFold_predictor(cfg_fname=cfg_fname,weight_path=weight_path,esm=esm,device='cuda:0')
+    inputs = [[seq,temp]]
+    ## return PDB format strings
+    res = predictor.predict(inputs)[0]
 ```
+More example, see example/TF_prediction.ipynb
