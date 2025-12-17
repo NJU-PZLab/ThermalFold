@@ -17,7 +17,7 @@ Predicting Temperature-Dependent Protein Structure from Sequence by ThermalFold
 Please copy the downloaded model_weight.pt file to ./weight path
 
 ## Usage
-Before inference: ```conda actiavte thermalFold```
+Before inference: ```conda activate thermalFold```
 
 On first use, downloading the ESM2 weights may take some time.
 ``` 
