@@ -12,7 +12,9 @@ Predicting Temperature-Dependent Protein Structure from Sequence by ThermalFold
 
 ```pip install .```
 ## Download model weight by:
-```wget https://zenodo.org/records/17951162/files/model_weight.pt -p weight/```
+```wget https://zenodo.org/records/17951162/files/model_weight.pt```
+
+Please copy the downloaded model_weight.pt file to ./weight path
 
 ## Usage
 Before inference: ```conda actiavte thermalFold```
