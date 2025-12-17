@@ -40,4 +40,4 @@ with ESM_embedding('esm2_650M',device='cuda:0',cache_path='./esm_cache') as esm:
     ## return PDB format strings
     res = predictor.predict(inputs)[0]
 ```
-More example, see example/TF_prediction.ipynb (which has been tested on NVIDIA RTX 4090)
+More example, see example/TF_prediction.ipynb (which has been tested on NVIDIA RTX 4090 CUDA 12.8)
