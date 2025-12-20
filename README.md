@@ -2,7 +2,7 @@
 Predicting Temperature-Dependent Protein Structure from Sequence by ThermalFold
 
 ## Installation
-```git clone https://github.com/Andachten/ThermalFold.git```
+```git clone https://github.com/NJU-PZLab/ThermalFold.git```
 
 ```cd ThermalFold```
 
