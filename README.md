@@ -29,7 +29,7 @@ weight_path  = 'weight/model_weight.pt'
 
 
 ##Thioredoxin
-temperature = 420
+temperature = 430
 sequence = 'HGSTTFNIQDGPDFQDRVVNSETPVVVDFHAQWCGPCKILGPRLEKMVAKQHGKVVMAKVDIDDHTDLAIEYEVSAVPTVLAMKNGDVVDKFVGIKDEDQLEAFLKKLIG'
 
 ## Create ESM Embeddings cache
